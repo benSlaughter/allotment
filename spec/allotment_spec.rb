@@ -2,7 +2,6 @@ require 'coveralls'
 Coveralls.wear!
 
 require 'allotment'
-require 'rspec'
 
 describe Allotment, "#record_event" do
   it "records the time for the block" do
