@@ -8,6 +8,6 @@ Gem::Specification.new do |s|
   s.email       = 'b.p.slaughter@gmail.com'
   s.license     = 'MIT'
   s.homepage    = 'https://github.com/benSlaughter/allotment'
-  s.files       = ["lib/Allotment.rb"]
+  s.files       = ["lib/allotment.rb"]
   s.test_files  = ["spec/allotment_spec.rb"]
 end
