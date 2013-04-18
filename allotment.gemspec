@@ -9,6 +9,9 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   s.homepage    = 'https://github.com/benslaughter/allotment'
 
-  s.files         = ['lib/allotment.rb']
-  s.test_files    = ['spec/allotment_spec.rb']
+  s.required_ruby_version = ">= 1.9.2"
+  s.add_development_dependency 'rspec'
+
+  s.files       = ["lib/allotment.rb"]
+  s.test_files  = ["spec/allotment_spec.rb"]
 end
