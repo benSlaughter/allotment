@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name         = 'allotment'
-  spec.version      = '0.0.1'
+  spec.version      = '0.0.2'
 
   spec.author       = 'Ben Slaughter'
   spec.email        = 'b.p.slaughter@gmail.com'
