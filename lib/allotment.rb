@@ -1,3 +1,4 @@
+require 'allotment/array'
 require 'allotment/stopwatch'
 
 module Allotment
