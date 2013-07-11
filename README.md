@@ -106,6 +106,9 @@ array = Allotment.results["my_recording"]
 ```ruby
 result = Allotment.results["my_recording"].first
 ```
+```ruby
+result = Allotment.results["my_recording"].average
+```
 
 ### Allotment Stopwatches
 
