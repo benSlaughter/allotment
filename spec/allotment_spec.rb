@@ -27,6 +27,11 @@ describe Allotment do
       result.class.should eq Allotment::Stopwatch
     end
 
+    it "returns an unnamed stopwatch if no name given" do
+      result = Allotment.start_recording
+      result.name.should eq 'unnamed'
+    end
+
     it "returns a stopwatch with the given name" do
       result = Allotment.start_recording 'my_recording'
       result.name.should eq 'my_recording'
