@@ -12,6 +12,10 @@ describe Allotment::Stopwatch do
       Allotment::Stopwatch.new.status.should eq 'running'
     end
 
+    it "gives the stopwatch a name if none given" do
+      Allotment::Stopwatch.new.name.should =~ /stopwatch_\d+/
+    end
+
     it "sets the name of the stopwatch" do
       Allotment::Stopwatch.new('stopwatch').name.should eq 'stopwatch'
     end

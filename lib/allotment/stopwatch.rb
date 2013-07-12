@@ -4,7 +4,7 @@ module Allotment
 	class Stopwatch
 		attr_reader :name, :status, :start_time
 
-		def initialize name = Time.now.to_s
+		def initialize name = self.class.uniqe_name
 			@name       = name
 			@status     = 'running'
 			@start_time = Time.now
@@ -19,7 +19,7 @@ module Allotment
 			@status       = 'stopped'
 			@current_time = Time.now - @start_time
 		end
-
+		
 		def reset
 			@start_time 	= Time.now
 			@current_time = 0
@@ -27,6 +27,11 @@ module Allotment
 
 		def lap
 			Time.now - @start_time
+		end
+
+		private
+		def self.uniqe_name
+			"stopwatch_" + (@id ? @id += 1 : @id = 0).to_s
 		end
 	end
 end
