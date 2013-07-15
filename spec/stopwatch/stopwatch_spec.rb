@@ -21,7 +21,7 @@ describe Allotment::Stopwatch do
     end
   end
 
-  describe ".stop" do
+  describe "#stop" do
     it "returns a float" do
       sw = Allotment::Stopwatch.new
       sw.stop.class.should eq Float
@@ -46,7 +46,7 @@ describe Allotment::Stopwatch do
     end
   end
 
-  describe ".start" do
+  describe "#start" do
     it "sets the stopwatch status to running" do
       sw = Allotment::Stopwatch.new
       sw.stop
@@ -71,7 +71,7 @@ describe Allotment::Stopwatch do
     end
   end
 
-  describe ".reset" do
+  describe "#reset" do
     it "resets the stopwatch total time when stopped" do
       sw = Allotment::Stopwatch.new
       sleep 0.01
@@ -99,7 +99,7 @@ describe Allotment::Stopwatch do
     end
   end
 
-  describe ".lap" do
+  describe "#lap" do
     it "returns a float" do
       sw = Allotment::Stopwatch.new
       sw.lap.class.should eq Float

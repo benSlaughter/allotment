@@ -1,5 +1,5 @@
 describe Array do
-  describe ".average" do
+  describe "#average" do
     it "returns a float" do
       [1,2,3,4,5].average.class.should eq Float
     end
