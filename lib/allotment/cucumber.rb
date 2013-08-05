@@ -9,7 +9,5 @@ After do |scenario|
 end
 
 at_exit do
-	Allotment.results.each do | name, values |
-		puts name.to_s + ":" + value.to_s
-	end
+	puts Allotment.results_string
 end
