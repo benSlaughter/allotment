@@ -7,16 +7,16 @@ describe Allotment do
 
   describe ".record_event" do
     it "records the time for the block" do
-      Allotment.record_event('name') { nil }
+      Allotment.record_event('my_recording0') { sleep 0.01 }
     end
 
     it "returns a float" do
-      result = Allotment.record_event('name') { nil }
+      result = Allotment.record_event('my_recording0') { sleep 0.01 }
       result.class.should eq Float
     end
 
     it "returns the execute time of the block" do
-      result = Allotment.record_event('name') { sleep 0.01 }
+      result = Allotment.record_event('my_recording0') { sleep 0.01 }
       result.round(2).should eq 0.01
     end
   end
@@ -46,6 +46,7 @@ describe Allotment do
   describe ".stop_recording" do
     it "returns a float" do
       Allotment.start_recording 'my_recording1'
+      sleep 0.01
       result = Allotment.stop_recording 'my_recording1'
       result.class.should eq Float
     end
@@ -64,12 +65,12 @@ describe Allotment do
 
   describe ".results" do
     it "returns a hash" do
-      Allotment.record_event('my_recording4') { nil }
+      Allotment.record_event('my_recording4') { sleep 0.01 }
       Allotment.results.class.should eq Hash
     end
 
     it "returns a hash with the event in" do
-      Allotment.record_event('my_recording5') { nil }
+      Allotment.record_event('my_recording5') { sleep 0.01 }
       Allotment.results.should include('my_recording5')
     end
 
@@ -83,6 +84,19 @@ describe Allotment do
       Allotment.record_event('my_recording7') { sleep 0.02 }
       Allotment.results['my_recording7'][0].round(2).should eq 0.01
       Allotment.results['my_recording7'][1].round(2).should eq 0.02
+    end
+  end
+
+  describe ".results_string" do
+    it "returns a string" do
+      Allotment.record_event('my_recording8') { sleep 0.01 }
+      Allotment.results_string.class.should eq String
+    end
+
+    it "returns a string with the event in" do
+      Allotment.record_event('my_recording9') { sleep 0.03 }
+      Allotment.results_string.should include('my_recording9')
+      Allotment.results_string.should include('0.03')
     end
   end
 end

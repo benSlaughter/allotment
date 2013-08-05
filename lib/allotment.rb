@@ -1,5 +1,6 @@
 require 'allotment/array'
 require 'allotment/stopwatch'
+require 'json'
 
 module Allotment
 	class << self
@@ -28,6 +29,10 @@ module Allotment
 
 		def results
 			@results
+		end
+
+		def results_string
+			JSON.pretty_generate @results
 		end
 	end
 end
