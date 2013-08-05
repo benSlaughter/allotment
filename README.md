@@ -1,11 +1,10 @@
 # Allotment
 
-Warning: testing hooks
-
 [![Code Climate](https://codeclimate.com/github/benSlaughter/allotment.png)](https://codeclimate.com/github/benSlaughter/allotment)
 [![Build Status](https://travis-ci.org/benSlaughter/allotment.png?branch=master)](https://travis-ci.org/benSlaughter/allotment)
 [![Dependency Status](https://gemnasium.com/benSlaughter/allotment.png)](https://gemnasium.com/benSlaughter/allotment)
 [![Coverage Status](https://coveralls.io/repos/benSlaughter/allotment/badge.png?branch=master)](https://coveralls.io/r/benSlaughter/allotment)
+[![Gem Version](https://badge.fury.io/rb/allotment.png)](http://badge.fury.io/rb/allotment)
 
 Allotment is a performance rubygem that records and stores the performance timing of running a block of code,
 or from a from a chosen point, until a task or action is complete.
@@ -114,4 +113,4 @@ result = Allotment.results["my_recording"].average
 
 ### Allotment Stopwatches
 
-
+TODO
