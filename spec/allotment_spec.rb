@@ -7,16 +7,22 @@ describe Allotment do
 
   describe ".record_event" do
     it "records the time for the block" do
-      Allotment.record_event('my_recording0') { sleep 0.01 }
+      Allotment.record_event('my_recording 0.1') { sleep 0.01 }
+    end
+
+    it "records the time for the proc" do
+      Allotment.record_event 'my_recording 0.2' do
+        sleep 0.01
+      end
     end
 
     it "returns a float" do
-      result = Allotment.record_event('my_recording0') { sleep 0.01 }
+      result = Allotment.record_event('my_recording 0.3') { sleep 0.01 }
       result.class.should eq Float
     end
 
     it "returns the execute time of the block" do
-      result = Allotment.record_event('my_recording0') { sleep 0.01 }
+      result = Allotment.record_event('my_recording 0.4') { sleep 0.01 }
       result.round(2).should eq 0.01
     end
   end
