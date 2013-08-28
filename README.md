@@ -114,3 +114,14 @@ result = Allotment.results["my_recording"].average
 ### Allotment Stopwatches
 
 TODO
+
+## Release Notes
+### Version 1.0.0
+ * Inital release version.
+ * Allotment has the ablility to record blocks and procs, and to record from two separate points within the code.
+ * Stopwatch has been completed and can start, stop, lap and restart.
+ * There is an extention of Array for an average.
+ * There is Cucumber support, a cucumber file has been included that will record scenario and test time.
+
+
+
