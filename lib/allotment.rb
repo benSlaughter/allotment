@@ -1,5 +1,6 @@
 require 'allotment/array'
 require 'allotment/stopwatch'
+require 'allotment/methods'
 require 'json'
 
 module Allotment

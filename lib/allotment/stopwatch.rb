@@ -1,5 +1,3 @@
-require 'allotment/stopwatch'
-
 module Allotment
 	class Stopwatch
 		attr_reader :name, :status, :start_time
@@ -19,7 +17,7 @@ module Allotment
 			@status       = 'stopped'
 			@current_time = Time.now - @start_time
 		end
-		
+
 		def reset
 			@start_time 	= Time.now
 			@current_time = 0
