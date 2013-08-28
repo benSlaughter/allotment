@@ -117,11 +117,20 @@ TODO
 
 ## Release Notes
 ### Version 1.0.0
- * Inital release version.
+###### Major: Inital release version.
  * Allotment has the ablility to record blocks and procs, and to record from two separate points within the code.
- * Stopwatch has been completed and can start, stop, lap and restart.
+ * Stopwatch has been completed and can start, stop, split, lap and restart.
  * There is an extention of Array for an average.
  * There is Cucumber support, a cucumber file has been included that will record scenario and test time.
 
+### Version 1.0.1
+###### Patch: Added instance methods
+ * Added instance methods so that the module can be included into a class and allotment does not need to be called every time.
 
+## Planned Releases
+### Version 1.1.0
+###### Minor: Improvements to recording events and stopwatch management
+ * Rescue within an event to ensure that the timing is stopped in the event of a failure
+ * Complete the readme with updated information on using stopwatches
+ * A complete record of all spawned stopwatches
 

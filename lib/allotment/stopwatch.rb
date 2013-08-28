@@ -1,9 +1,10 @@
 module Allotment
 	class Stopwatch
-		attr_reader :name, :status, :start_time
+		attr_reader :name, :status
 
-		def initialize name = self.class.uniqe_name
-			@name       = name
+		def initialize name = nil
+			@stopwatch  = self.class.uniqe_name
+			@name       = name || @stopwatch
 			@status     = 'running'
 			@start_time = Time.now
 		end
@@ -20,10 +21,16 @@ module Allotment
 
 		def reset
 			@start_time 	= Time.now
-			@current_time = 0
+			@current_time = nil
 		end
 
 		def lap
+			@new_lap = Time.now - (@lap_time || @start_time)
+			@lap_time = Time.now
+			return @new_lap
+		end
+
+		def split
 			Time.now - @start_time
 		end
 

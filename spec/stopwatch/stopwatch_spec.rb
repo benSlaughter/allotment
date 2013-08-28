@@ -99,6 +99,28 @@ describe Allotment::Stopwatch do
     end
   end
 
+  describe "#split" do
+    it "returns a float" do
+      sw = Allotment::Stopwatch.new
+      sw.split.class.should eq Float
+    end
+
+    it "returns the correct time" do
+      sw = Allotment::Stopwatch.new
+      sleep 0.01
+      sw.split.round(2).should eq 0.01
+      sleep 0.01
+      sw.split.round(2).should eq 0.02
+      sw.stop.round(2).should eq 0.02
+    end
+
+    it "keeps its stopwatch name" do
+      sw = Allotment::Stopwatch.new('stopwatch')
+      sw.split
+      sw.name.should eq 'stopwatch'
+    end
+  end
+
   describe "#lap" do
     it "returns a float" do
       sw = Allotment::Stopwatch.new
@@ -110,7 +132,8 @@ describe Allotment::Stopwatch do
       sleep 0.01
       sw.lap.round(2).should eq 0.01
       sleep 0.01
-      sw.lap.round(2).should eq 0.02
+      sw.lap.round(2).should eq 0.01
+      sw.stop.round(2).should eq 0.02
     end
 
     it "keeps its stopwatch name" do

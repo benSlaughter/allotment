@@ -1,10 +1,10 @@
 Gem::Specification.new do |spec|
   spec.name         = 'allotment'
-  spec.version      = '1.0.0'
+  spec.version      = '1.0.1'
 
   spec.author       = 'Ben Slaughter'
   spec.email        = 'b.p.slaughter@gmail.com'
-  spec.homepage     = 'https://github.com/benSlaughter/allotment'
+  spec.homepage     = 'http://benslaughter.github.io/allotment/'
 
   spec.summary      = 'Performance recording'
   spec.description  = 'A gem for recording performance and timings of blocks or from point to point'
