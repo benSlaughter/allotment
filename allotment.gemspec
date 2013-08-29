@@ -1,15 +1,27 @@
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'allotment/version'
+
 Gem::Specification.new do |spec|
   spec.name         = 'allotment'
-  spec.version      = '1.0.2'
+  spec.summary      = 'Allotment: Performance recording'
+  spec.description  = 'Simple performance recordings of blocks, procs or point to point'
+  spec.homepage     = 'http://benslaughter.github.io/allotment/'
+  spec.version      = Allotment::VERSION
+  spec.date         = Allotment::DATE
+  spec.license      = 'MIT'
 
   spec.author       = 'Ben Slaughter'
   spec.email        = 'b.p.slaughter@gmail.com'
-  spec.homepage     = 'http://benslaughter.github.io/allotment/'
 
-  spec.summary      = 'Performance recording'
-  spec.description  = 'A gem for recording performance and timings of blocks, procs or from point to point'
+  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'coveralls'
+  spec.add_runtime_dependency 'hashie'
+
+  spec.files        = ['README.md', 'LICENSE.md', 'allotment.gemspec']
+  spec.files        += Dir.glob("lib/**/*.rb")
+  spec.files        += Dir.glob("spec/**/*")
+  spec.test_files   = Dir.glob("spec/**/*")
   spec.require_path = 'lib'
-  spec.files        = Dir['lib/**/*.rb']
-  spec.test_files   = Dir['spec/**/*.rb']
-  spec.license      = 'MIT'
+
 end
