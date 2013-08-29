@@ -1,6 +1,7 @@
 require 'allotment/array'
 require 'allotment/stopwatch'
 require 'json'
+require 'hashie'
 
 module Allotment
 	class << self
@@ -11,7 +12,7 @@ module Allotment
 		end
 
 		def start_recording name = 'unnamed'
-			@watches ||= Hash.new
+			@watches ||= Hashie::Mash.new
 			@watches[name] = Stopwatch.new name
 		end
 
@@ -20,9 +21,9 @@ module Allotment
 			result = watch.stop
 
 			# Dealing with the results
-			@results ||= Hash.new
+			@results ||= Hashie::Mash.new
 			@results[name] ||= Array.new
-			@results[name].push result
+			@results[name] << result
 
 			return result
 		end
