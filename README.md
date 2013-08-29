@@ -126,6 +126,11 @@ TODO
 ### Version 1.0.1
 ###### Patch: Added instance methods
  * Added instance methods so that the module can be included into a class and allotment does not need to be called every time.
+ * Cleaned up stopwatch so that it had lap and split
+
+## Version 1.0.2
+###### Patch: Results returned as Hashie::Mash
+ * results methods now return results as a Hashie::Mash
 
 ## Planned Releases
 ### Version 1.1.0
