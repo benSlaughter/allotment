@@ -128,9 +128,16 @@ TODO
  * Added instance methods so that the module can be included into a class and allotment does not need to be called every time.
  * Cleaned up stopwatch so that it had lap and split
 
-## Version 1.0.2
+### Version 1.0.2
 ###### Patch: Results returned as Hashie::Mash
  * results methods now return results as a Hashie::Mash
+
+### Version 1.0.3
+###### Patch: Updated and added files
+ * Updated Gemfile
+ * Updated gemspec
+ * Added Version
+ * Added Licence
 
 ## Planned Releases
 ### Version 1.1.0
