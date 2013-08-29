@@ -152,7 +152,7 @@ describe Allotment do
   describe ".results" do
     it "returns a hash" do
       Allotment.record_event('my_recording4') { sleep 0.01 }
-      Allotment.results.class.should eq Hash
+      Allotment.results.class.should eq Hashie::Mash
     end
 
     it "returns a hash with the event in" do
@@ -180,7 +180,7 @@ describe Allotment do
 
     it "returns a hash" do
       @dummy_class.record_event('my_recording4') { sleep 0.01 }
-      @dummy_class.results.class.should eq Hash
+      @dummy_class.results.class.should eq Hashie::Mash
     end
 
     it "returns a hash with the event in" do
