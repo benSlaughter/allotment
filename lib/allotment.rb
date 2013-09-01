@@ -9,7 +9,7 @@ module Allotment
 			start_recording name
 			yield
 		ensure
-			stop_recording name
+			return stop_recording name
 		end
 
 		def start_recording name = 'unnamed'
