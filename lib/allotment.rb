@@ -8,6 +8,7 @@ module Allotment
 		def record_event name = 'unnamed', &block
 			start_recording name
 			yield
+		ensure
 			stop_recording name
 		end
 
