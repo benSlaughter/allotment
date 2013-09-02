@@ -13,7 +13,8 @@ class Allotment
 		def record_event name = 'unnamed', &block
 			start_recording name
 			yield
-			stop_recording name
+		ensure
+			return stop_recording name
 		end
 
 		def start_recording name = 'unnamed'

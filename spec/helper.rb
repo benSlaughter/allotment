@@ -1,9 +1,10 @@
 require 'coveralls'
-Coveralls.wear!
+require 'pry'
 
 require 'allotment'
 require 'allotment/methods'
-require 'pry'
+
+Coveralls.wear!
 
 RSpec.configure do |config|
   config.color_enabled  = true
