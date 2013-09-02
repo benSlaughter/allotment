@@ -1,5 +1,9 @@
 require 'coveralls'
+require 'pry'
+
 require 'allotment'
+require 'allotment/methods'
+
 Coveralls.wear!
 
 RSpec.configure do |config|

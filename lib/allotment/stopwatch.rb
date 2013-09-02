@@ -1,4 +1,4 @@
-module Allotment
+class Allotment
 	class Stopwatch
 		attr_reader :name, :status
 
