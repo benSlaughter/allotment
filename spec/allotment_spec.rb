@@ -25,6 +25,11 @@ describe Allotment do
       result = Allotment.record_event('my_recording 0.4') { sleep 0.01 }
       result.round(2).should eq 0.01
     end
+
+    it "returns still records the performance upon error" do
+      expect { Allotment.record_event('failed_recording') { sleep 0.01; raise 'error' } }.to raise_error RuntimeError, "error"
+      Allotment.results['failed_recording'].first.round(2).should eq 0.01
+    end
   end
 
   describe ".start_recording" do

@@ -12,9 +12,12 @@ class Allotment
 	class << self
 		def record_event name = 'unnamed', &block
 			start_recording name
-			yield
-		ensure
-			return stop_recording name
+			begin
+				yield
+			ensure
+				time = stop_recording name
+			end
+			return time
 		end
 
 		def start_recording name = 'unnamed'
