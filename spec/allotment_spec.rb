@@ -69,6 +69,32 @@ describe Allotment do
     end
   end
 
+  describe ".before" do
+    it "adds a hook to the before hooks array" do
+      hooks = Allotment.before { nil }
+      Allotment._hooks[:before].should eq hooks
+    end
+
+    it "runs the hook before the performance recording" do
+      Allotment.before { @before = Time.now.to_f }
+      Allotment.record_event('before') { @record = Time.now.to_f }
+      @record.should be > Allotment.instance_variable_get("@before")
+    end
+  end
+
+  describe ".after" do
+    it "adds a hook to the after hooks array" do
+      hooks = Allotment.after { nil }
+      Allotment._hooks[:after].should eq hooks
+    end
+
+    it "runs the hook after the performance recording" do
+      Allotment.after { @after = Time.now.to_f }
+      Allotment.record_event('after') { @record = Time.now.to_f }
+      @record.should be < Allotment.instance_variable_get("@after")
+    end
+  end
+
   describe ".results" do
     it "returns a hash" do
       Allotment.record_event('my_recording4') { sleep 0.01 }
@@ -101,8 +127,8 @@ describe Allotment do
 
     it "returns a string with the event in" do
       Allotment.record_event('my_recording9') { sleep 0.03 }
-      Allotment.results_string.should include('my_recording9')
-      Allotment.results_string.should include('0.03')
+      Allotment.results_string.should include 'my_recording9'
+      Allotment.results_string.should include '0.03'
     end
   end
 end
