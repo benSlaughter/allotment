@@ -18,7 +18,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'coveralls'
   spec.add_runtime_dependency 'hashie'
-  spec.add_runtime_dependency 'hooks'
 
   spec.files        = ['README.md', 'LICENSE.md', 'allotment.gemspec']
   spec.files        += Dir.glob("lib/**/*.rb")

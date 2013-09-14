@@ -3,12 +3,8 @@ require 'allotment/stopwatch'
 
 require 'json'
 require 'hashie'
-require 'hooks'
 
-class Allotment
-  include Hooks
-  define_hooks :before, :after
-
+module Allotment
   class << self
     def record_event name = 'unnamed', &block
       start_recording name
@@ -21,7 +17,6 @@ class Allotment
     end
 
     def start_recording name = 'unnamed'
-      run_hook :before
       @watches ||= Hashie::Mash.new
       @watches[name] = Stopwatch.new name
     end
@@ -29,7 +24,6 @@ class Allotment
     def stop_recording name
       watch = @watches.delete(name) { |n| raise NameError, "No recording:" + n }
       result = watch.stop
-      run_hook :after
 
       # Dealing with the results
       @results ||= Hashie::Mash.new

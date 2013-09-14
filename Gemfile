@@ -5,6 +5,5 @@ gem 'rspec'
 gem 'pry'
 
 gem 'hashie'
-gem 'hooks'
 
 gemspec
