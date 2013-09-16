@@ -2,7 +2,7 @@ require 'helper'
 
 describe Allotment do
   it "is a class" do
-    Allotment.class.should eq Class
+    Allotment.class.should eq Module
   end
 
   describe ".record_event" do

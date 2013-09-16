@@ -1,11 +1,19 @@
-require 'allotment/array'
-require 'allotment/stopwatch'
-
 require 'json'
 require 'hashie'
 
+require 'allotment/array'
+require 'allotment/stopwatch'
+
 module Allotment
   class << self
+    def on_start(&block)
+      block_given? ? @on_start = block : @on_start
+    end
+
+    def on_stop(&block)
+      block_given? ? @on_stop = block : @on_stop
+    end
+
     def record_event name = 'unnamed', &block
       start_recording name
       begin
