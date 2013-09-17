@@ -46,7 +46,7 @@ a small {
 }
 
 .wrapper {
-  width:960px;
+  width:860px;
   margin:0 auto;
 }
 
@@ -160,7 +160,7 @@ header ul a strong {
 }
 
 section {
-  width:600px;
+  width:500px;
   float:right;
   padding-bottom:50px;
 }
@@ -183,13 +183,7 @@ footer {
   bottom:50px;
 }
 
-@media print, screen and (max-height: 700px) {
-  footer {
-    position:static;
-  }
-}
-
-@media print, screen and (max-width: 1060px) {
+@media print, screen and (max-width: 960px) {
 
   div.wrapper {
     width:auto;
