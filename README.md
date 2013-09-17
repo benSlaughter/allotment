@@ -46,10 +46,10 @@ require 'allotment'
 The basic way of recording a block is as follows:
 
 ```ruby
-Allotment.record_event('my_recording') { # code here }
+Allotment.record('my_recording') { # code here }
 ```
 ```ruby
-Allotment.record_event('my_recording') do
+Allotment.record('my_recording') do
   # code here
 end
 ```
@@ -57,10 +57,10 @@ end
 When an event has been completed the performance timing is returned by the method:
 
 ```ruby
-performance = Allotment.record_event { # code here }
+performance = Allotment.record { # code here }
 ```
 ```ruby
-performance = Allotment.record_event do
+performance = Allotment.record do
   # code here
 end
 ```
@@ -72,21 +72,21 @@ The basic way of recording point to point is as follows:
 ```ruby
 require 'allotment'
 
-Allotment.start_recording 'my_recording'
+Allotment.start 'my_recording'
 # code here
-Allotment.stop_recording 'my_recording'
+Allotment.stop 'my_recording'
 ```
 
 When stop recording is called the performance timing is returned by the method:
 
 ```ruby
-performance = Allotment.stop_recording 'my_recording'
+performance = Allotment.stop 'my_recording'
 ```
 
 When start recording is called the timing stopwatch is returned by the method:
 
 ```ruby
-stopwatch = Allotment.start_recording 'my_recording'
+stopwatch = Allotment.start 'my_recording'
 ```
 
 _More on [stopwatches](#allotment-stopwatches)_

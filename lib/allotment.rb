@@ -5,6 +5,9 @@ require 'allotment/array'
 require 'allotment/stopwatch'
 
 module Allotment
+  @watches = Hashie::Mash.new
+  @results = Hashie::Mash.new
+
   class << self
     def on_start(&block)
       block_given? ? @on_start = block : @on_start
@@ -14,27 +17,25 @@ module Allotment
       block_given? ? @on_stop = block : @on_stop
     end
 
-    def record_event name = 'unnamed', &block
-      start_recording name
+    def record name = 'unnamed_event'
+      start name
       begin
         yield
       ensure
-        time = stop_recording name
+        result = stop name
       end
-      return time
+      result
     end
 
-    def start_recording name = 'unnamed'
-      @watches ||= Hashie::Mash.new
-      @watches[name] = Stopwatch.new name
+    def start name = 'unnamed_recording'
+      @watches[name] = Stopwatch.new(name).start
     end
 
-    def stop_recording name
+    def stop name
       watch = @watches.delete(name) { |n| raise NameError, "No recording:" + n }
       result = watch.stop
 
       # Dealing with the results
-      @results ||= Hashie::Mash.new
       @results[name] ||= Array.new
       @results[name] << result
       return result
@@ -42,10 +43,6 @@ module Allotment
 
     def results
       @results
-    end
-
-    def results_string
-      JSON.pretty_generate @results
     end
   end
 end
