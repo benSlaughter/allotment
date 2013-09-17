@@ -1,3 +1,5 @@
+require 'helper'
+
 describe Array do
   describe "#average" do
     it "returns a float" do

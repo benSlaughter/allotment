@@ -1,3 +1,5 @@
+require 'helper'
+
 describe Allotment::Stopwatch do
   it "is a class" do
     Allotment::Stopwatch.class.should eq Class
@@ -18,6 +20,24 @@ describe Allotment::Stopwatch do
 
     it "sets the name of the stopwatch" do
       Allotment::Stopwatch.new('stopwatch').name.should eq 'stopwatch'
+    end
+  end
+
+  describe "#inspect" do
+    it "returns the correct inspect string when created" do
+      sw = Allotment::Stopwatch.new
+      sw.inspect.should eq "#<Stopwatch:stopped>"
+    end
+
+    it "returns the correct inspect string when running" do
+      sw = Allotment::Stopwatch.new.start
+      sw.inspect.should eq "#<Stopwatch:running>"
+    end
+
+    it "returns the correct inspect string when stopped" do
+      sw = Allotment::Stopwatch.new.start
+      sw.stop
+      sw.inspect.should eq "#<Stopwatch:stopped>"
     end
   end
 

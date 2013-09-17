@@ -5,30 +5,17 @@ describe Allotment do
     Allotment.class.should eq Module
   end
 
-  describe ".record" do
-    it "records the time for the block" do
-      Allotment.record('my_recording 1.1') { sleep 0.01 }
+  describe ".on_start" do
+    it "stores the passed block" do
+      Allotment.on_start { 'test_returned_string' }
+      Allotment.on_start.call.should eq 'test_returned_string'
     end
+  end
 
-    it "records the time for the proc" do
-      Allotment.record 'my_recording 1.2' do
-        sleep 0.01
-      end
-    end
-
-    it "returns a float" do
-      result = Allotment.record('my_recording 1.3') { sleep 0.01 }
-      result.class.should eq Float
-    end
-
-    it "returns the execute time of the block" do
-      result = Allotment.record('my_recording 1.4') { sleep 0.01 }
-      result.round(2).should eq 0.01
-    end
-
-    it "returns still records the performance upon error" do
-      expect { Allotment.record('my_recording 1.5') { sleep 0.01; raise 'error' } }.to raise_error RuntimeError, "error"
-      Allotment.results['my_recording 1.5'].first.round(2).should eq 0.01
+  describe ".on_stop" do
+    it "stores the passed block" do
+      Allotment.on_stop { 'test_returned_string' }
+      Allotment.on_stop.call.should eq 'test_returned_string'
     end
   end
 
@@ -44,33 +31,75 @@ describe Allotment do
     end
 
     it "returns a stopwatch with the given name" do
-      result = Allotment.start 'my_recording 2.1'
-      result.name.should eq 'my_recording 2.1'
+      result = Allotment.start 'my_recording 1.1'
+      result.name.should eq 'my_recording 1.1'
     end
 
     it "returns a stopwatch that is 'running'" do
       result = Allotment.start
       result.status.should eq 'running'
     end
+
+    it "runs the on_start block" do
+      Allotment.on_start { @start_test = 'successful' }
+      @start_test.should eq nil
+      Allotment.start
+      @start_test.should eq 'successful'
+    end
   end
 
   describe ".stop" do
     it "returns a float" do
-      Allotment.start 'my_recording 3.1'
+      Allotment.start 'my_recording 2.1'
       sleep 0.01
-      result = Allotment.stop 'my_recording 3.1'
+      result = Allotment.stop 'my_recording 2.1'
       result.class.should eq Float
     end
 
     it "returns the execute time of the code" do
-      Allotment.start 'my_recording 3.2'
+      Allotment.start 'my_recording 2.2'
       sleep 0.01
-      result = Allotment.stop 'my_recording 3.2'
+      result = Allotment.stop 'my_recording 2.2'
       result.round(2).should eq 0.01
     end
 
     it "raises an error if the recording does not exist" do
-      expect { Allotment.stop 'my_recording 3.3' }.to raise_error NameError, "No recording:my_recording 3.3"
+      expect { Allotment.stop 'my_recording 2.3' }.to raise_error NameError, "No recording:my_recording 2.3"
+    end
+
+    it "runs the on_stop block" do
+      Allotment.start 'my_recording 2.4'
+      Allotment.on_stop { @stop_test = 'successful' }
+      @stop_test.should eq nil
+      Allotment.stop 'my_recording 2.4'
+      @stop_test.should eq 'successful'
+    end
+  end
+
+  describe ".record" do
+    it "records the time for the block" do
+      Allotment.record('my_recording 3.1') { sleep 0.01 }
+    end
+
+    it "records the time for the proc" do
+      Allotment.record 'my_recording 3.2' do
+        sleep 0.01
+      end
+    end
+
+    it "returns a float" do
+      result = Allotment.record('my_recording 3.3') { sleep 0.01 }
+      result.class.should eq Float
+    end
+
+    it "returns the execute time of the block" do
+      result = Allotment.record('my_recording 3.4') { sleep 0.01 }
+      result.round(2).should eq 0.01
+    end
+
+    it "returns still records the performance upon error" do
+      expect { Allotment.record('my_recording 3.5') { sleep 0.01; raise 'error' } }.to raise_error RuntimeError, "error"
+      Allotment.results['my_recording 3.5'].first.round(2).should eq 0.01
     end
   end
 

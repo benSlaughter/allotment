@@ -32,12 +32,12 @@
  * Created release notes
 
 ## Planned Versions
-### Version 2.0.0
-#### Major: Simplify, improve, and cleanup allotment
- * Rescue within an event to ensure that the timing is stopped in the event of a failure - completed
- * Remove old hooks and add new block management
+### Version 1.1.0
+#### Minor: Simplify, improve, and cleanup allotment
+ * Rescue within an event to ensure that the timing is stopped in the event of a failure - *completed*
+ * Remove old hooks and add new block management - *completed*
  * Remove and old or unrequired code
  * Readme completed with hooks, stopwatches and now functionality
- * 100% coverage rspec tests
+ * 100% coverage rspec tests - *completed* (so far)
  * Complete commenting of code
- * Improved method naming
+ * Improved method naming - *completed*
