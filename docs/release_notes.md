@@ -1,3 +1,7 @@
+---
+layout: index
+---
+
 # Release Notes
 ## Released Versions
 ### Version 1.0.0
