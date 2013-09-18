@@ -41,31 +41,6 @@ describe Allotment::Stopwatch do
     end
   end
 
-  describe "#stop" do
-    it "returns a float" do
-      sw = Allotment::Stopwatch.new.start
-      sw.stop.class.should eq Float
-    end
-
-    it "returns the correct time" do
-      sw = Allotment::Stopwatch.new.start
-      sleep 0.01
-      sw.stop.round(2).should eq 0.01
-    end
-
-    it "sets the stopwatch status to stopped" do
-      sw = Allotment::Stopwatch.new.start
-      sw.stop
-      sw.status.should eq 'stopped'
-    end
-
-    it "keeps its stopwatch name" do
-      sw = Allotment::Stopwatch.new('stopwatch').start
-      sw.stop
-      sw.name.should eq 'stopwatch'
-    end
-  end
-
   describe "#start" do
     it "sets the stopwatch status to running" do
       sw = Allotment::Stopwatch.new.start
@@ -91,12 +66,36 @@ describe Allotment::Stopwatch do
     end
   end
 
+  describe "#stop" do
+    it "returns a float" do
+      sw = Allotment::Stopwatch.new.start
+      sw.stop.class.should eq Float
+    end
+
+    it "returns the correct time" do
+      sw = Allotment::Stopwatch.new.start
+      sleep 0.01
+      sw.stop.round(2).should eq 0.01
+    end
+
+    it "sets the stopwatch status to stopped" do
+      sw = Allotment::Stopwatch.new.start
+      sw.stop
+      sw.status.should eq 'stopped'
+    end
+
+    it "keeps its stopwatch name" do
+      sw = Allotment::Stopwatch.new('stopwatch').start
+      sw.stop
+      sw.name.should eq 'stopwatch'
+    end
+  end
+
   describe "#reset" do
     it "resets the stopwatch total time when stopped" do
       sw = Allotment::Stopwatch.new.start
       sleep 0.01
       sw.stop
-      sw.status.should eq 'stopped'
       sw.reset
       sw.start
       sleep 0.01
@@ -106,7 +105,6 @@ describe Allotment::Stopwatch do
     it "resets the stopwatch total time when running" do
       sw = Allotment::Stopwatch.new.start
       sleep 0.01
-      sw.status.should eq 'running'
       sw.reset
       sleep 0.01
       sw.stop.round(2).should eq 0.01
@@ -131,7 +129,26 @@ describe Allotment::Stopwatch do
       sw.split.round(2).should eq 0.01
       sleep 0.01
       sw.split.round(2).should eq 0.02
-      sw.stop.round(2).should eq 0.02
+    end
+
+    it "returns the correct time while stopped" do
+      sw = Allotment::Stopwatch.new.start
+      sleep 0.01
+      sw.split.round(2).should eq 0.01
+      sw.stop
+      sleep 0.01
+      sw.split.round(2).should eq 0.01
+    end
+
+    it "returns the time from the last start" do
+      sw = Allotment::Stopwatch.new.start
+      sleep 0.01
+      sw.split.round(2).should eq 0.01
+      sw.stop
+      sleep 0.01
+      sw.start
+      sleep 0.01
+      sw.split.round(2).should eq 0.01
     end
 
     it "keeps its stopwatch name" do
@@ -153,7 +170,17 @@ describe Allotment::Stopwatch do
       sw.lap.round(2).should eq 0.01
       sleep 0.01
       sw.lap.round(2).should eq 0.01
-      sw.stop.round(2).should eq 0.02
+    end
+
+    it "returns the correct time over stop/start" do
+      sw = Allotment::Stopwatch.new.start
+      sleep 0.01
+      sw.lap.round(2).should eq 0.01
+      sw.stop
+      sleep 0.01
+      sw.start
+      sleep 0.01
+      sw.lap.round(2).should eq 0.01
     end
 
     it "keeps its stopwatch name" do
@@ -164,7 +191,7 @@ describe Allotment::Stopwatch do
   end
 
   describe "#time" do
-    it "displays the current time while the stopwatch is running" do
+    it "displays the current time while running" do
       sw = Allotment::Stopwatch.new('stopwatch').start
       sleep 0.01
       sw.time.round(2).should eq 0.01
@@ -172,13 +199,23 @@ describe Allotment::Stopwatch do
       sw.time.round(2).should eq 0.02
     end
 
-    it "displays the current time when the stopwatch has stopped" do
+    it "displays the current time while stopped" do
       sw = Allotment::Stopwatch.new('stopwatch').start
       sleep 0.01
-      sw.stop
       sw.time.round(2).should eq 0.01
+      sw.stop
       sleep 0.01
       sw.time.round(2).should eq 0.01
+    end
+
+    it "returns the correct time over stop/start" do
+      sw = Allotment::Stopwatch.new.start
+      sleep 0.01
+      sw.stop
+      sleep 0.01
+      sw.start
+      sleep 0.01
+      sw.time.round(2).should eq 0.02
     end
 
     it "displays the current time when the stopwatch has been restarted" do

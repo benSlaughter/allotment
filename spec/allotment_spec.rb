@@ -64,7 +64,7 @@ describe Allotment do
     end
 
     it "raises an error if the recording does not exist" do
-      expect { Allotment.stop 'my_recording 2.3' }.to raise_error NameError, "No recording:my_recording 2.3"
+      expect { Allotment.stop 'my_recording 2.3' }.to raise_error NameError, "Unknown recording:my_recording 2.3"
     end
 
     it "runs the on_stop block" do

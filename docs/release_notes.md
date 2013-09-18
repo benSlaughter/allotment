@@ -33,11 +33,11 @@
 
 ## Planned Versions
 ### Version 1.1.0
-#### Minor: Simplify, improve, and cleanup allotment
+#### Minor: Simplify, improve, clean
  * Rescue within an event to ensure that the timing is stopped in the event of a failure - *completed*
  * Remove old hooks and add new block management - *completed*
- * Remove and old or unrequired code
+ * Remove and old or unrequired code - *completed*
  * Readme completed with hooks, stopwatches and now functionality
  * 100% coverage rspec tests - *completed* (so far)
- * Complete commenting of code
+ * Complete commenting of code - *completed*
  * Improved method naming - *completed*
