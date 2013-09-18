@@ -1,7 +1,7 @@
 module Allotment
   # Stopwatch Class
   # Strangely enough works just like a stopwatch
-  # @!attribure [r] name
+  # @!attribute [r] name
   #   @return [String] the current name
   # @!attribute [r] status
   #   @return [String] the current status (running|stopped)

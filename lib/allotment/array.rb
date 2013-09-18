@@ -1,3 +1,4 @@
+# Ruby Array
 class Array
   # If an array is all numbers
   # This displayes the mean average

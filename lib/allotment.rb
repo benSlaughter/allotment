@@ -24,14 +24,14 @@ module Allotment
   # Allotment module methods
   class << self
     # Called when a recording is started
-    # @returns [Proc] the stored request proc
+    # @return [Proc] the stored request proc
     #
     def on_start &block
       block_given? ? @on_start = block : @on_start
     end
 
     # Called when a recording is stopped
-    # @returns [Proc] the stored request proc
+    # @return [Proc] the stored request proc
     #
     def on_stop &block
       block_given? ? @on_stop = block : @on_stop
@@ -62,7 +62,7 @@ module Allotment
     # Record event
     # Expects a block to be passed
     # @param name [String] the name of the event
-    # @yeild [] runs the event
+    # @yield [] runs the event
     #
     def record name = 'unnamed_event'
       start name
