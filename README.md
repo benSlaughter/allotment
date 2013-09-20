@@ -1,16 +1,20 @@
-# Allotment
 "Time is what we want most, but what we use worst."
-
 --------------
+
 [![Code Climate](https://codeclimate.com/github/benSlaughter/allotment.png)](https://codeclimate.com/github/benSlaughter/allotment)
 [![Build Status](https://travis-ci.org/benSlaughter/allotment.png?branch=master)](https://travis-ci.org/benSlaughter/allotment)
 [![Dependency Status](https://gemnasium.com/benSlaughter/allotment.png)](https://gemnasium.com/benSlaughter/allotment)
 [![Coverage Status](https://coveralls.io/repos/benSlaughter/allotment/badge.png?branch=master)](https://coveralls.io/r/benSlaughter/allotment)
 [![Gem Version](https://badge.fury.io/rb/allotment.png)](http://badge.fury.io/rb/allotment)
+
 ---------------
 
-Allotment is a performance rubygem that records and stores the performance timing of running a block of code,
-or from a from a chosen point, until a task or action is complete.
+Allotment is a performance recording gem. It makes recording the performance of code simple.
+Allotment is a way of monitoring the performance of a block or a proc of code.
+If the code spans across several methods or objects then there is the ability to monitor the required areas.
+
+Allotment handles all the recording of the performance times,
+it stores them once a performance story has been completed.
 
 Each performance recording is stored with a recording name,
 each following recording is added so that multiple recordings can be queried and assesed.
