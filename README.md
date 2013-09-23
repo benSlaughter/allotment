@@ -9,22 +9,13 @@
 
 ---------------
 
-Allotment is a performance recording gem. It makes recording the performance of code simple.
-Allotment is a way of monitoring the performance of a block or a proc of code.
-If the code spans across several methods or objects then there is the ability to monitor the required areas.
-
-Allotment handles all the recording of the performance times,
-it stores them once a performance story has been completed.
-
-Each performance recording is stored with a recording name,
-each following recording is added so that multiple recordings can be queried and assesed.
-
-Allotment also stores all the results so that they can be easily accessed at any time.
+Allotment is a performance time recording gem.
+It makes recording performance simple, while still being powerful and flexible.
 
 ## Setup
 
 Allotment has been tested with Ruby 1.9.2 and later.
-To install, type:
+To install:
 
 ```bash
 gem install allotment
@@ -32,15 +23,14 @@ gem install allotment
 
 ## Using Allotment with Cucumber
 
-If you are using Cucumber you can record each scenario, and report the results to the console, add this line into your env.rb file:
+If you are using Cucumber you can record each scenario.
+Add this line into your env.rb file:
 
 ```ruby
 require 'allotment/cucumber'
 ```
 
 ## Using Allotment
-
-Allotments main features are: the ability to record performance of ruby blocks; and record from point to point.
 
 Require Allotment at the start of your code:
 
@@ -50,7 +40,7 @@ require 'allotment'
 
 ### Recording a Block
 
-The basic way of recording a block is as follows:
+Recording a block of code could not be simpler.
 
 ```ruby
 Allotment.record('my_recording') { # code here }
@@ -61,7 +51,7 @@ Allotment.record('my_recording') do
 end
 ```
 
-When an event has been completed the performance timing is returned by the method:
+When an event has been completed the performance timing is returned by the method.
 
 ```ruby
 performance = Allotment.record { # code here }
@@ -72,25 +62,24 @@ performance = Allotment.record do
 end
 ```
 
-### Record point to point:
+### Record point to point
 
-The basic way of recording point to point is as follows:
+Sometime you may want to record performance of more than just a block.
+Allotment can do that too.
 
 ```ruby
-require 'allotment'
-
 Allotment.start 'my_recording'
 # code here
 Allotment.stop 'my_recording'
 ```
 
-When stop recording is called the performance timing is returned by the method:
+When stop is called the performance timing is returned by the method.
 
 ```ruby
 performance = Allotment.stop 'my_recording'
 ```
 
-When start recording is called the timing stopwatch is returned by the method:
+When start recording is called the timing stopwatch is returned by the method.
 
 ```ruby
 stopwatch = Allotment.start 'my_recording'
@@ -98,12 +87,13 @@ stopwatch = Allotment.start 'my_recording'
 
 _More on [stopwatches](#allotment-stopwatches)_
 
-If a recording name does not exists, then a NameError shall be raised.
+**If a recording name does not exists, then a NameError is raised.**
 
 ### Accessing performance results
 
-Performance recordings are stored within a hash. The reperformance results are logged to an array under the recording name.
-They can be access from Allotment at any time:
+Allotment stores all the performance recordings as and when they happen.
+If multiple recording of the same event exist they are stored in an array.
+Allotment also patches Array with an average function.
 
 ```ruby
 hash = Allotment.results
