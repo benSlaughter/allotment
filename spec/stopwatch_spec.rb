@@ -42,6 +42,10 @@ describe Allotment::Stopwatch do
   end
 
   describe "#start" do
+    it "returns and instance of self" do
+      Allotment::Stopwatch.new.start.class.should eq Allotment::Stopwatch
+    end
+
     it "sets the stopwatch status to running" do
       sw = Allotment::Stopwatch.new.start
       sw.stop
@@ -49,10 +53,9 @@ describe Allotment::Stopwatch do
       sw.status.should eq 'running'
     end
 
-    it "keeps track of total time" do
+    it "does not change the time when called twice" do
       sw = Allotment::Stopwatch.new.start
       sleep 0.01
-      sw.stop
       sw.start
       sleep 0.01
       sw.stop.round(2).should eq 0.02
@@ -74,6 +77,24 @@ describe Allotment::Stopwatch do
 
     it "returns the correct time" do
       sw = Allotment::Stopwatch.new.start
+      sleep 0.01
+      sw.stop.round(2).should eq 0.01
+    end
+
+    it "keeps track of total time" do
+      sw = Allotment::Stopwatch.new.start
+      sleep 0.01
+      sw.stop
+      sleep 0.01
+      sw.start
+      sleep 0.01
+      sw.stop.round(2).should eq 0.02
+    end
+
+    it "returns the correct time if called twice" do
+      sw = Allotment::Stopwatch.new.start
+      sleep 0.01
+      sw.stop.round(2).should eq 0.01
       sleep 0.01
       sw.stop.round(2).should eq 0.01
     end
@@ -110,6 +131,11 @@ describe Allotment::Stopwatch do
       sw.stop.round(2).should eq 0.01
     end
 
+    it "should retuen an instance of self" do
+      sw = Allotment::Stopwatch.new
+      sw.reset.class.should eq Allotment::Stopwatch
+    end
+
     it "keeps its stopwatch name" do
       sw = Allotment::Stopwatch.new('stopwatch').start
       sw.reset
@@ -131,13 +157,13 @@ describe Allotment::Stopwatch do
       sw.split.round(2).should eq 0.02
     end
 
-    it "returns the correct time while stopped" do
+    it "returns the correct time when stopped" do
       sw = Allotment::Stopwatch.new.start
-      sleep 0.01
-      sw.split.round(2).should eq 0.01
+      sleep 0.02
+      sw.split.round(2).should eq 0.02
       sw.stop
       sleep 0.01
-      sw.split.round(2).should eq 0.01
+      sw.split.round(2).should eq 0.02
     end
 
     it "returns the time from the last start" do
@@ -179,6 +205,16 @@ describe Allotment::Stopwatch do
       sw.stop
       sleep 0.01
       sw.start
+      sleep 0.01
+      sw.lap.round(2).should eq 0.01
+    end
+
+    it "returns the correct time when stopped" do
+      sw = Allotment::Stopwatch.new.start
+      sleep 0.01
+      sw.lap.round(2).should eq 0.01
+      sleep 0.01
+      sw.stop
       sleep 0.01
       sw.lap.round(2).should eq 0.01
     end

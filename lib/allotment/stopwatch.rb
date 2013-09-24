@@ -30,10 +30,11 @@ module Allotment
     # @return [Allotment::Stopwatch] self
     #
     def start
-      @last_start = Time.now
-      @lp_start   = Time.now - @lp_time if @lp_time
-      @sw_start   = Time.now - @sw_time
-      @status     = 'running'
+      if status == 'stopped'
+        @last_start = Time.now
+        @sw_start   = Time.now - @sw_time
+        @status     = 'running'
+      end
       self
     end
 
@@ -42,10 +43,13 @@ module Allotment
     # @return [Float] the stopwatch time
     #
     def stop
-      @status    = 'stopped'
-      @last_stop = Time.now
-      @lp_time   = Time.now - @lp_start if @lp_start
-      @sw_time   = Time.now - @sw_start
+      if status == 'running'
+        @status    = 'stopped'
+        @last_stop = Time.now
+        @sw_time   = Time.now - @sw_start
+      else
+        time
+      end
     end
 
     # sets all times to 0
@@ -64,8 +68,8 @@ module Allotment
     # @return [Float] the lap time
     #
     def lap
-      new_lap  = Time.now - (@lp_start || @sw_start)
-      @lp_start = Time.now
+      new_lap  = time - (@lp_start || 0)
+      @lp_start = time
       new_lap
     end
 
