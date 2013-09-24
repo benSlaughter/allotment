@@ -187,7 +187,7 @@ Each method behaves in a slightly different way.
 
 When the stop watch is run and the methods are called.
 
-```
+```ruby
       30 seconds
       start                    end
       |--------------------------|
@@ -198,7 +198,7 @@ Time  |---10---|---20---|---30---|
 
 When the stopwatch is stopped and the methods are called.
 
-```
+```ruby
       30 seconds with 10 second stop
       start
 Lap   |---10---|        |---10---|
