@@ -1,5 +1,10 @@
+---
+layout: index
+---
+
+
 # History
-## Planned Versions
+## Released Versions
 ### Version 1.1.0
 #### Minor: Simplify, improve, clean
 ##### Changed
@@ -43,7 +48,6 @@
  * Added instance methods so that the module can be included into a class and allotment does not need to be called every time.
  * Cleaned up stopwatch so that it had lap and split
 
-## Released Versions
 ### Version 1.0.0
 #### Major: Inital release version.
  * Allotment has the ablility to record blocks and procs, and to record from two separate points within the code.
