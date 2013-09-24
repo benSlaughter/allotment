@@ -2,13 +2,22 @@
 ## Planned Versions
 ### Version 1.1.0
 #### Minor: Simplify, improve, clean
- * Rescue within an event to ensure that the timing is stopped in the event of a failure - *completed*
- * Remove old hooks and add new block management - *completed*
- * Remove and old or unrequired code - *completed*
- * Readme completed with hooks, stopwatches and now functionality - *completed*
- * 100% coverage rspec tests - *completed* (so far)
- * Complete commenting of code - *completed*
- * Improved method naming - *completed*
+##### Changed
+ * Rescue within an event to ensure that the timing is stopped in the event of a failure
+ * Remove old hooks and add new block management
+ * Remove and old or unrequired code
+ * Improved method naming
+ * Moved history and license into root
+
+##### Added
+ * Readme completed with hooks, stopwatches and now functionality
+ * 100% coverage rspec tests
+ * Complete commenting of code
+ * Added Rakefile and Tasks
+
+##### Fixed
+ * Updated Stopwatch
+ * Updated Stopwatch Specs
 
 ### Version 1.0.4
 #### Patch: Added before and after hooks
