@@ -182,7 +182,6 @@ sw.reset
 A stopwatch has the ability to lap, spit, and view the current time.
 Each method behaves in a slightly different way.
  * Lap is the time elapsed from the last time a lap was called.
-.
  * Split is the time from the last time the stopwatch was started.
  * Time is the total time from when the stopwatch was first started.
 
