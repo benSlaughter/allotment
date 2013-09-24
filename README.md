@@ -202,3 +202,4 @@ Time  |---10---|        |---20---|
 ## Notes
 
 Stopwatches use ruby Time to calculate the time between a start and a stop.
+Allotment rspec tests need to be improved upon.
