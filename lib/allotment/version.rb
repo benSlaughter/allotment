@@ -1,6 +1,6 @@
 module Allotment
   # Current Allotment verion
-  VERSION = "1.0.4".freeze
+  VERSION = "1.1.0".freeze
   # Date version created
-  DATE = "2013-09-02".freeze
+  DATE = "2013-09-24".freeze
 end
