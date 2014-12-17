@@ -5,6 +5,7 @@
 [![Dependency Status](https://gemnasium.com/benSlaughter/allotment.png)](https://gemnasium.com/benSlaughter/allotment)
 [![Coverage Status](https://coveralls.io/repos/benSlaughter/allotment/badge.png?branch=master)](https://coveralls.io/r/benSlaughter/allotment)
 [![Gem Version](https://badge.fury.io/rb/allotment.png)](http://badge.fury.io/rb/allotment)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/benSlaughter/allotment/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/benSlaughter/allotment/?branch=master)
 
 Allotment is a performance time recording gem.
 It makes recording performance simple, while still being powerful and flexible.
